@@ -8,6 +8,3 @@ basic_info=[
   "兰格雷的头发是红色的，经常以双马尾的发型示人。",
   "兰格雷的口头禅是‘你白痴啊’和‘Chance!’。",
 ]
-
-[database]
-mongo={url="mongodb://localhost:27017", db="test_db"}

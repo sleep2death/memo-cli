@@ -1,7 +1,10 @@
+// load dotenv file
+import 'dotenv/config'
+
 import { Command } from "commander";
 import figlet from "figlet";
 import chalk from "chalk";
-import { fromConfig } from "./lib/session.js";
+import { newSession, loadSession } from "./lib/actions.js";
 
 // print logo and version
 console.log(chalk.bold.green(figlet.textSync("MEMO CLI", "3D-ASCII")));
@@ -20,17 +23,12 @@ program
   .argument("<config>", "the toml configuration file")
   .action(newSession);
 
-async function newSession(str, _) {
-  const sessionId = await fromConfig(str);
-  console.log(sessionId);
-}
-
 program
   .command("load")
   .description("load the existed session from database")
   .argument("[name]", "the session name")
   .action((str) => {
-    console.log(str);
+    loadSession(str)
   });
 
 program.parseAsync(process.argv);
