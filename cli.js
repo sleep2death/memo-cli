@@ -4,7 +4,7 @@ import 'dotenv/config'
 import { Command } from "commander";
 import figlet from "figlet";
 import chalk from "chalk";
-import { newSession, loadSession } from "./lib/actions.js";
+import { newSession, loadSession } from './lib/session.js';
 
 // print logo and version
 console.log(chalk.bold.green(figlet.textSync("MEMO CLI", "3D-ASCII")));
@@ -27,8 +27,6 @@ program
   .command("load")
   .description("load the existed session from database")
   .argument("[name]", "the session name")
-  .action((str) => {
-    loadSession(str)
-  });
+  .action(loadSession);
 
 program.parseAsync(process.argv);
